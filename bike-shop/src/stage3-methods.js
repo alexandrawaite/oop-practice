@@ -1,15 +1,28 @@
-function Bike(rings = [3,7]) {
+function Bike(name, price, rings = [3,7]) {
+  this.name = name;
+  this.price = price;
   this.moving = false;
   this.rings = rings;
   this.tires = [new Tire(), new Tire()];
+  this.frame = new Frame();
+  this.brakes = new Brakes();
 }
 
-function Frame() {
-  // your code here
+function Frame(color = 'black', size = 55, style = 'street') {
+  this.color = color;
+  this.size = size;
+  this.style = style;
 }
 
-function Tire() {
+function Tire(diameter = 22, type = 'street') {
+  this.diameter = diameter;
+  this.type = type;
   this.flat = false;
+}
+
+function Brakes(front = true, back = true) {
+  this.front = front;
+  this.back = back;
 }
 
 Tire.prototype.isFlat = function () {

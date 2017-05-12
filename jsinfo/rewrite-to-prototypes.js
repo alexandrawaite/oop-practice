@@ -1,5 +1,5 @@
 function Clock({ template }) {
-  this.template = template;
+  this._template = template;
 }
 
 Clock.prototype.render = function() {
@@ -14,7 +14,7 @@ Clock.prototype.render = function() {
   let secs = date.getSeconds();
   if (secs < 10) secs = '0' + secs;
 
-  let output = this.template
+  let output = this._template
     .replace('h', hours)
     .replace('m', mins)
     .replace('s', secs);
@@ -23,10 +23,10 @@ Clock.prototype.render = function() {
 }
 
 Clock.prototype.stop = function() {
-  clearInterval(this.timer);
+  clearInterval(this._timer);
 }
 
 Clock.prototype.start = function() {
-  this.render();
-  this.timer = setInterval(() => this.render(), 1000);
+  this._render();
+  this._timer = setInterval(() => this._render(), 1000);
 }
